@@ -1,0 +1,68 @@
+  This is separate from the ipykernel package so we can avoid doing imports until\n
+from Flood_Severity_Calculation_fix import flood_severity
+from GFMS_duration_fix import fix_duration
+from IPython.display import Image, HTML
+from datetime import date
+from datetime import date,timedelta,datetime
+from datetime import date
+from descartes import PolygonPatch
+from flask import Flask
+from flask import render_template
+from ftplib import FTP
+from gis_output import generate_gisfile
+from ipyleaflet import Map,WMSLayer,basemaps,WidgetControl,GeoJSON,Rectangle
+from math import sqrt
+from matplotlib.collections import PatchCollection
+from matplotlib.patches import Polygon as mpl_Polygon
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from netCDF4 import Dataset as NetCDFFile 
+from osgeo import gdal
+from osgeo import ogr
+from owslib.wms import WebMapService
+from progressbar import progress
+from rasterio import Affine # or from affine import Affine
+from rasterio.mask import mask
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from shapely.geometry import Point
+from skimage.color import label2rgb
+from skimage.color import rgb2gray
+from skimage.filters import threshold_otsu
+from skimage.measure import label, regionprops
+from skimage.morphology import closing, square
+from skimage.segmentation import clear_border
+import argparse
+import configparser
+import csv
+import fiona 
+import geopandas
+import ipywidgets as wdg
+import json
+import logging
+import lxml.html as lh
+import math
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt\n
+import matplotlib.pyplot as plt
+import numpy as np
+import numpy as np
+import numpy as np
+import os
+import os, json
+import os, sys,json,csv
+import os, sys,json
+import os,sys
+import os,sys,json,csv
+import pandas as pd
+import pandas as pd
+import pandas as pd
+import rasterio
+import requests, wget
+import requests
+import scipy.stats
+import shutil
+import sys
+import yaml
+import zipfile
+use, offer to sell, sell, import, and otherwise transfer the Work,
