@@ -3,26 +3,34 @@ FROM  library/ubuntu:20.04
 
 # install OS dependencies
 RUN apt-get update && \
-apt-get install -y python3-pip liblapack-dev libopenblas-dev libgdal-dev libproj-dev libproj15 libghc-zlib-dev libzmq3-dev libxml2-dev libxslt-dev libhdf5-dev libnetcdf-dev libjpeg-dev
+ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
+apt-get install -y python3-pip liblapack-dev libopenblas-dev libgdal26 libgdal-dev libproj-dev libproj15 libghc-zlib-dev libzmq3-dev libxml2-dev libxslt-dev libhdf5-dev libnetcdf-dev libjpeg-dev tzdata git vim
 
 # install python libraries
-RUN python --version && \
-which pip && \
-pip install cython && \
-pip install pyproj==2.6.1 && \
-pip install numpy && \
-pip install scipy && \
-pip install pywget && \
-pip install pyyaml 
-
-RUN pip install sendgrid geopandas matplotlib rasterio
-
-RUN pip install requests wget
-
-RUN pip install osgeo
-
-RUN pip install ipywidgets lxml descartes flask gis_output ipyleaflet netCDF4 hdf5
+RUN python3 --version && \
+which pip3 && \
+pip3 install cython && \
+pip3 install pyproj==2.6.1 && \
+pip3 install numpy && \
+pip3 install scipy && \
+pip3 install requests && \
+pip3 install pywget && \
+pip3 install wget && \
+pip3 install pyyaml && \
+pip3 install sendgrid && \
+pip3 install geopandas && \
+pip3 install matplotlib && \
+pip3 install rasterio && \
+pip3 install osgeo && \
+pip3 install ipywidgets && \
+pip3 install lxml && \
+pip3 install descartes && \
+pip3 install flask && \
+pip3 install ipyleaflet && \
+pip3 install gdal==3.0.4 && \
+pip3 install netCDF4
+#pip3 install hdf5
 
 RUN git clone https://github.com/ECoulter/ModelOfModels
 
-CMD python ./ModelofModels/data/datatool.py --cron
+CMD python3 /ModelofModels/data/datatool.py --cron
