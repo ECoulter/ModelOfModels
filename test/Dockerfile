@@ -33,4 +33,24 @@ pip3 install netCDF4
 
 RUN git clone https://github.com/ECoulter/ModelOfModels
 
-CMD python3 /ModelofModels/data/datatool.py --cron
+#Have to create an empty config file, to write over with a volume mount during 
+# the actual run. Under k8s, this can be done via a ConfigMap.
+# For now, just running under cron w/ docker
+# datatool looks in pwd for the config.yml...
+COPY watersheds.tar.gz /watersheds.tar.gz
+RUN touch /config.yml &&\
+tar xfz /watersheds.tar.gz 
+
+RUN mv /Watersheds_032020/ ModelOfModels/data/ &&\
+rm /watersheds.tar.gz
+# This all needs to happen on the data dir because datatool doesn't handle missing dirs
+#&&\
+#mkdir -p /mom-data/rawdata/download &&\
+#mkdir -p /mom-data/rawdata/gfms &&\
+#mkdir -p /mom-data/cron_data/gfms &&\
+#mkdir -p /mom-data/cron_data/glofas &&\
+#mkdir -p /mom-data/cron_data/flood_severity &&\
+#mkdir -p /mom-data/cron_data/gis_output
+#
+
+CMD python3 /ModelOfModels/data/datatool.py --cron
